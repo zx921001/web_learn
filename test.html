@@ -6,11 +6,31 @@
     <script>
         $(document).ready(function(){
             //绑定事件
+//            $("p").click(function(){
+//                $(this).hide();
+//            });
             $("p").click(function(){
-                $(this).hide();
+//                $.ajax({
+//                    type: "POST",
+//                    url: "index.html",
+//                    data: "name=John&location=Boston",
+//                    success: function(msg){
+//                        alert( "Data Saved: " + msg );
+//                    }
+//                });
+                $.ajax({
+                    url: "index.html",
+                    cache: false,
+                    success: function(html){
+                       $("#results").append(html);
+                       // $("#results").css("display","none");
+                    }
+                });
+
             });
             //添加css样式
             $("div > p").css("background","red");
+
             //动态添加标签
             $("<div><p>appendTo</p></div>").appendTo("body");
             $("<input>").attr("type", "checkbox").appendTo("body");
@@ -19,20 +39,22 @@
                 text: "Click me!",
                 click: function(){
                     $(this).toggleClass("test");
+
                 }
             }).appendTo("body");
         });
+
     </script>
     <style>
        div .test{
-           background-color: black;
+           background-color: red;
        }
 
     </style>
 </head>
 <body>
-<div>
-    <p>asdfsaf</p>
+<div id="results">
+    asdfsfadsaf
 </div>
 <p>如果您点击我，我会消失。</p>
 <p>点击我，我会消失。</p>
