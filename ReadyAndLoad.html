@@ -33,6 +33,12 @@
 //            });
             $("tr:even").css("background","#666699");
             $("tr:odd").css("background","red");
+            $("input[name='email']").focus(function(){
+                if(this.value=='请输入') {this.value='';}this.style.color='#f00';
+            });
+            $("input[name='email']").blur(function(){
+                if(this.value=='') {this.value='请输入';this.style.color='#ccc';}
+            });
             $("#btnOperate").click(function(){
                 var count=0;
                 $("input[name='category']").each(function(){
@@ -60,6 +66,9 @@
     </script>
 </head>
 <body>
+<div>
+    <p><input type="text" name="email" value="请输入"/></p>
+</div>
 <table>
     <tr>
         <td>1</td>
