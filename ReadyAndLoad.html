@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+//                    console.log ("ready")
+//            console.log ("html"+$("#msg").html());
+//            console.log ("innerHTML"+$("#msg")[0].innerHTML);
+//            console.log ("eq(0)[0].innerHTML"+$("#msg").eq(0)[0].innerHTML);
+//            console.log ("get(0).innerHTML"+$("#msg").get(0).innerHTML);
+//            jquery中this与$(this)的用法区别.先看以下代码:
+//            $("#textbox").hover( function() { this.title = "Test"; }, fucntion() { this.title = "OK”; } );
+//                这里的this其实是一个Html 元素(textbox)，
+//textbox有text属性，所以这样写是完全没有什么问题的。
+// 但是如果将this换成$(this)就不是那回事了，就会报错了。
+// 以下写法是错误的： $("#textbox").hover( function() { $(this).title ＝ "Test"; }, function() { $(this).title = "OK"; } );
+//                这里的$(this)是一个JQuery对象，而jQuery对象沒有title 属性，因此这样写是错误的。
+// JQuery拥有attr()方法可以get/set DOM对象的属性，所以正确的写法应该是这样： 正确的写法：
+// $("#textbox").hover( function() { $(this).attr('title', 'Test'); }, function() { $(this).attr('title', 'OK'); } );
+//                使用JQuery的好处是它包裝了各种浏览器版本对DOM对象的操作，因此统一使用$(this)而不再用this应该是比较不错的选择。
+           // $(" div>ul>li").css("background","red");
+            $(" div>ul>li").click(function(){
+               //alert($(this).html());
+                //alert(this.innerHTML);
+                this.innerHTML=this.innerHTML+"test";
+            });
+//            $("p").click(function(){
+//               alert(this.innerHTML);
+//            });
+            $("tr:even").css("background","#666699");
+            $("tr:odd").css("background","red");
+            $("#btnOperate").click(function(){
+                var count=0;
+                $("input[name='category']").each(function(){
+//                    if (true == $(this).attr("checked")) {
+                    if (true == this.checked) {
+                        count=count+1;
+                    }
+                });
+                alert(count)
+            });
+//            $("#btnOperate").click(function(){
+//                var count=0;
+//                $("input[name='category']：checked").each(function(){
+//                    if (true == $(this).attr("checked")) {
+//                        count=count+1;
+//                    }
+//                    alert(count);
+//                });
+//            });
+        });
+//        window.onload (function(){
+        //                    console.log ("load")
+        //        });
+
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>1</td>
+        <td>td1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>td2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>td3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>td4</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>td5</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>td6</td>
+    </tr>
+</table>
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+</div>
+<div>
+    <p>P1</p>
+    <p>P2</p>
+</div>
+<p><input type="checkbox" name="category" value="checkbox1" />checkbox1 </p>
+<p><input type="checkbox" name="category" value="checkbox2" />checkbox2</p>
+<p><input type="checkbox" name="category" value="checkbox3" />checkbox3</p>
+<p><input type="checkbox" name="category" value="checkbox4" />checkbox4</p>
+<p><input type="checkbox" name="category" value="checkbox5" />checkbox5</p>
+<p><input id="btnOperate" type="button" value="选择" /></p>
+
+</body>
+</html>
